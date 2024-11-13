@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from "framer-motion";
+import { motion,AnimatePresence  } from "framer-motion";
 import { WaterAnimation } from "./WaterAnimation";
 export const MorphingBubble = () => {
   const [isMouseUp, setIsMouseUp] = useState(false);
@@ -7,6 +7,11 @@ export const MorphingBubble = () => {
   const [startTime, setStartTime] = useState(null);
   const [disable, setDisable] = useState(false);
   const [image, setImage] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   useEffect(() => {
     let timer;
     if (isMouseUp && startTime !== null) {
@@ -75,6 +80,7 @@ export const MorphingBubble = () => {
     >
       
       <motion.div
+  
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onTouchStart={handleTouchStart}
@@ -159,36 +165,36 @@ export const MorphingBubble = () => {
           {isMouseUp&&(<WaterAnimation />)}
       
        
-        {!image&&(<img 
-        className="pointer-events-none  select-none rotate-[-8deg] relative top-4 right-1"
+          {!image && (
+        <motion.img
+        key="image" 
+        className="pointer-events-none select-none rotate-[-10deg] relative top-4 right-1"
         draggable={false}
-     
-      
-          src="/me.png"
-          alt="me"
-          style={{
-            width: "99%",
-            height: "100%",
-            
-            objectFit: "cover",
-            objectFit: "contain",
-          }}
-        />)}
-      {image&&( <img 
-        className="pointer-events-none select-none rotate-[-8deg] relative top-3 left-4"
-        draggable={false}
-     
-      
+        src="/me.png"
+        alt="me"
+
+        style={{
+          width: "99%",
+          height: "100%",
+          objectFit: "contain",
+        }}
+      />
+      )}
+      {image && (
+        <motion.img
+          key="image2"
+          className="pointer-events-none select-none rotate-[-10deg] relative top-3 left-4"
+          draggable={false}
           src="/me2.png"
           alt="me"
+      
           style={{
             width: "100%",
             height: "100%",
-            
-            objectFit: "cover",
             objectFit: "contain",
           }}
-        />)}
+        />
+      )}
       
       </motion.div>
     </div>

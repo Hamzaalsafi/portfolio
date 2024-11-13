@@ -7,10 +7,46 @@ import {Nav} from './Nav';
 import { Project } from './Project';
 import {MorphingBubble} from './MorphingBubble'
 import {useModeContext} from './DarkModeProvider';
+
+import {Loading} from './Loading';
 function App() {
   const {mode}=useModeContext();
+  const [loading, setLoading]=useState(true);
   const Home = useRef(null);
   const Projects = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3100);
+  }, []);
+  const smoothScrollTo = (element) => {
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 700; 
+    let start = null;
+
+    function animationStep(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const ease = easeInOutCubic(progress / duration);
+      window.scrollTo(0, startPosition + distance * ease);
+      if (progress < duration) {
+        requestAnimationFrame(animationStep);
+      }
+    }
+
+    requestAnimationFrame(animationStep);
+  };
+
+  // Ease function for smooth scroll effect
+  const easeInOutCubic = (t) => {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+
+  const scrollToHome = () => smoothScrollTo(Home.current);
+  const scrollToProjects = () => smoothScrollTo(Projects.current);
   const [text]=useTypewriter({
     words: [
       "immersive digital journeys",
@@ -29,9 +65,19 @@ function App() {
     delaySpeed: 500,
       })
   return (
-    <div className='overflow-x-hidden'>
-    <div ref={Home} className={`w-screen h-screen ${mode==="dark"?"app":"app2"} app flex flex-col items-center`}>
-      <Nav HomeRef={Home} ProjectsRef={Projects} />
+    <div>
+   
+      {loading && <Loading />}
+   {!loading&&( <div className='overflow-x-hidden'>
+    <motion.div
+    
+    ref={Home} className={`w-screen h-screen ${mode==="dark"?"app":"app2"} app flex flex-col items-center`}>
+      
+
+
+
+
+      <Nav scrollToHome={scrollToHome} scrollToProjects={scrollToProjects} />
     <div className='  w-[100%] max-w-[950px] h-screen justify-between  flex-col md:flex-row flex md:justify-between  items-center p-20 px-2 md:px-4 ' >
       <div className='flex-col'>
     <MorphingBubble/>
@@ -184,11 +230,12 @@ function App() {
   
   </div>
   
-  </div>
-  <section className='h-screen w-screen' ref={Projects} ><Project/></section>
+  </motion.div>
+  <div ref={Projects} ><Project/></div>
   
   
-  <div ref={Projects} id="Projects" className='w-screen h-screen flex justify-center items-center'></div>
+ 
+  </div>)}
   </div>
   );
 }

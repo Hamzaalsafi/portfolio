@@ -7,7 +7,50 @@
   background-size: 35px 35px;
   transition: background-color 0.4s ease, background-image 0.4s ease;
 }
+.app3{
+  background-color: #1a1a1a; 
+  background-image: 
+    linear-gradient(#2a2a2a 1px, transparent 1px), 
+    linear-gradient(90deg, #2a2a2a 1px, transparent 1px);
+  background-size: 70px 70px;
 
+}
+.donation{
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
+}
+.custom-tooltip {
+  background-color: #333333 !important;
+  color: #ffffff;
+}
+.custom-arrow {
+  color: #333333 !important;
+}
+.custom-tooltip2 {
+  background-color: #181818 !important;
+  color: #ffffff !important;
+}
+.custom-arrow2 {
+  color: #181818 !important;
+}
+.svgoo{
+
+  
+  width: 60%;
+  height: 60%;
+  min-width: 200px;
+  max-height: 550px;
+  max-width: 550px;
+  
+  min-height: 200px;
+  stroke-dasharray: 2746;
+  animation: 2.9s ss linear;
+}
+
+@keyframes ss{
+  0% { stroke-dashoffset: 2746; }
+  100% { stroke-dashoffset: 0; }
+}
 .app2 {
   background-color: #cccccc; 
   background-image: 
@@ -176,3 +219,4 @@
     transform: translateY(-10px);
   }
 }
+ 

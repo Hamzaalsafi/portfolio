@@ -1,15 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import  {useModeContext}  from './DarkModeProvider';
 import { motion } from "framer-motion";
-export function Nav({Home,Projects}) {
+export function Nav({scrollToHome,scrollToProjects}) {
   const [activeSection, setActiveSection] = useState("Home");
   const {mode,setMode}=useModeContext();
   const [scroll,setScroll]=useState(0);
   const handleSectionClick = (section) => {
-    setActiveSection(section);
+   
+    if(section==='Projects'){
+      scrollToProjects();
+    }
+    if(section==='Home'){
+      scrollToHome();
+    }
+    
   };
   const toggleMode = () => {
-    // Adding a slight delay before changing the mode for smoother transition
+
     setTimeout(() => {
       setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
     }, 200);
@@ -21,7 +28,7 @@ export function Nav({Home,Projects}) {
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
 
-      // Change active section based on the scroll position relative to viewport height
+      
       if (scrollPosition < viewportHeight / 2) {
         setActiveSection("Home");
       } else if (scrollPosition < viewportHeight * 1.5) {
