@@ -77,7 +77,7 @@ export function Gallery({images,link}) {
 
         src={images[currentIndex]}
         alt={`Image ${currentIndex + 1}`}
-        className="h-auto cursor-pointer max-h-[310px] w-auto " 
+        className="h-auto cursor-pointer max-h-[300px] md:max-h-[355px] w-auto " 
         onClick={handleLinkClickLink}
          loading="lazy"
         initial={{ opacity: 0 }}

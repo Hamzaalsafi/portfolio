@@ -13,7 +13,7 @@ export function ProjectCard({ project }) {
 
     useEffect(() => {
         const handleResize = () => {
-            setIsMobile(window.innerWidth <= 640);  
+            setIsMobile(window.innerWidth <= 780);  
         };
 
         handleResize(); 

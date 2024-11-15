@@ -86,7 +86,7 @@ function App() {
     <div className={`flex-col ${mode==="dark"?"text-gray-200":"text-black"}    justify-start pt-4`}>
     <h1
     
-    className='text-4xl font-bold '>Hamza Alsafi</h1>
+    className='text-4xl font-bold  '>Hamza Alsafi</h1>
    <h1 className='text-3xl py-3 '>
     Front-End /Ux,Ui Designer
    </h1>

@@ -51,9 +51,9 @@ let projects=[
     title2:"Building a University Resource Hub for the Future",
     description:'A collaborative platform where students and faculty contribute valuable university resources, stored in a database to support the creation of a comprehensive platform for students, providing access to all university resources.',
     keyFeatures:[
-      'Infinite scroll leaderboard showcasing top donors',
+      'Infinite scroll leaderboard ',
       'Real-time stats on donors, materials covered, and donation count',
-      'User-friendly entry selection (teacher or student) stored locally',
+      'User-friendly entry selection',
       'Comprehensive forms for selecting specialization, subject, and resource type',
       'Modern, responsive, and engaging design'
     ],
@@ -61,29 +61,32 @@ let projects=[
       "React",
       "Tailwind",
       "CSS",
-      "Firebase",
-      "Vite"
+      "supabase",
+      "bootstrap",
     ],
     ToolTipSvg:[
       "/react.svg",
       "/tailwind.png",
       "/css.svg",
-      "/firebase.svg",
-      "/vite.png"
+      "/Supabase.svg",
+      "/Bootstrap.svg"
     ],
     macImages:[
-      "/kittyTask1.png",
-      "/kittyTask2.png",
-      "/kittyTask3.png",
-      "/kittyTask4.png",
-      "/kittyTask5.png"
+      "/shark1.png",
+      "/shark2.png",
+      "/shark3.png",
+      "/shark4.png",
+  
     ],
     phoneImages:[
-      "/kittyTaskPhone2.png",
-      "/kittyTaskPhone1.png",
-      "/kittyTaskPhone3.png"
+      "/sharkphone1.png",
+      "/sharkphone5.png",
+      "/sharkphone2.png",
+      "/sharkphone3.png",
+      "/sharkphone4.png",
+
     ],
-    link:'https://hamzaalsafi.github.io/KittyTask2/'
+    link:'https://sharikataa.vercel.app/'
   },
   {
 
