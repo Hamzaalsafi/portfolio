@@ -88,7 +88,7 @@ function App() {
     
     className='text-4xl font-bold '>Hamza Alsafi</h1>
    <h1 className='text-3xl py-3 '>
-    Front-End /Ux/Ui Designer
+    Front-End /Ux,Ui Designer
    </h1>
    <div className='flex items-center gap-2'>
    <div className='flex flex-col gap-1 w-fit justify-center items-center mr-2'>
@@ -232,8 +232,7 @@ function App() {
   
   </motion.div>
   <div ref={Projects} ><Project/></div>
-  
-  
+  <div className='flex w-screen h-screen '></div>
  
   </div>)}
   </div>

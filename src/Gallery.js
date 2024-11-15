@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-export function Gallery({images}) {
+export function Gallery({images,link}) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
+  const handleLinkClickLink = () => {
+    window.open(link, '_blank');
+  };
 
-  // Function to start the autoplay
   const startAutoplay = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
@@ -31,7 +33,7 @@ export function Gallery({images}) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.scrollIntoView({ behavior: 'smooth' });
+      
         }
       },
       { threshold: 0.5 }
@@ -75,7 +77,8 @@ export function Gallery({images}) {
 
         src={images[currentIndex]}
         alt={`Image ${currentIndex + 1}`}
-        className="h-auto max-h-[310px] w-auto " 
+        className="h-auto cursor-pointer max-h-[310px] w-auto " 
+        onClick={handleLinkClickLink}
          loading="lazy"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
