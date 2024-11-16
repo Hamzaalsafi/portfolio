@@ -87,7 +87,7 @@ export function Gallery({ images, link }) {
               backgroundColor:
                 currentIndex === index
                   ? "rgba(239, 68, 68, 1)"
-                  : "rgba(209, 213, 219, 1)", // Using rgba here
+                  : "rgba(209, 213, 219, 1)",
             }}
             transition={{
               type: "tween",

@@ -38,7 +38,6 @@ export function Nav({
 
       const viewportHeight = window.innerHeight;
 
-      // Check if a section is in the viewport
       if (
         homeRect &&
         homeRect.top <= viewportHeight / 2 &&
@@ -58,8 +57,7 @@ export function Nav({
       ) {
         setActiveSection("Skills");
       } else {
-        // Optionally, handle other sections like About or Contact
-        setActiveSection("OtherSection"); // Set this to the default section
+        setActiveSection("OtherSection");
       }
     };
 
