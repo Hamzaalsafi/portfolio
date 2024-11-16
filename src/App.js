@@ -9,11 +9,13 @@ import { MorphingBubble } from "./MorphingBubble";
 import { useModeContext } from "./DarkModeProvider";
 
 import { Loading } from "./Loading";
+import { Skills } from "./Skills";
 function App() {
   const { mode } = useModeContext();
   const [loading, setLoading] = useState(true);
   const Home = useRef(null);
   const Projects = useRef(null);
+  const skills = useRef(null);
   const handleLinkClickLinkedin = () => {
     window.open("www.linkedin.com/in/hamza-alsafi-b52401272", "_blank");
   };
@@ -47,12 +49,12 @@ function App() {
     requestAnimationFrame(animationStep);
   };
 
-  // Ease function for smooth scroll effect
   const easeInOutCubic = (t) => {
     return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
   };
 
   const scrollToHome = () => smoothScrollTo(Home.current);
+  const scrollToSkills = () => smoothScrollTo(skills.current);
   const scrollToProjects = () => smoothScrollTo(Projects.current);
   const [text] = useTypewriter({
     words: [
@@ -81,6 +83,10 @@ function App() {
             className={`w-screen h-screen ${mode === "dark" ? "app" : "app2"} app flex flex-col items-center`}
           >
             <Nav
+              HomeRef={Home}
+              ProjectRef={Projects}
+              SkillsRef={skills}
+              scrollToSkills={scrollToSkills}
               scrollToHome={scrollToHome}
               scrollToProjects={scrollToProjects}
             />
@@ -96,7 +102,7 @@ function App() {
                 <div className="flex items-center gap-2">
                   <div className="flex flex-col gap-1 w-fit justify-center items-center mr-2">
                     <img
-                      src={`${mode === "dark" ? "/location.svg" : "locationDark.svg"}`}
+                      src={`${mode === "dark" ? "/location.svg" : "/locationDark.svg"}`}
                       alt="location"
                       className="w-7 h-7  location"
                     />
@@ -259,7 +265,10 @@ function App() {
           <div ref={Projects}>
             <Project />
           </div>
-          <div className="flex w-screen h-screen "></div>
+          <div ref={skills}>
+            {" "}
+            <Skills />
+          </div>
         </div>
       )}
     </div>

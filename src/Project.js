@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { useModeContext } from "./DarkModeProvider";
-import Tooltip from "@mui/material/Tooltip";
-import { Gallery } from "./Gallery";
+
 import { ProjectCard } from "./ProjectCard";
 let projects = [
   {
@@ -144,7 +142,7 @@ export function Project() {
           ))}
         </div>
         <div
-          className={`${mode !== "dark" ? "text-zinc-900" : "text-zinc-200"} h-full w-full  pt-5 gap-6 md:gap-12  items-center flex flex-col`}
+          className={`${mode !== "dark" ? "text-zinc-900" : "text-zinc-200"} h-full w-full  pt-5 gap-7 md:gap-14  items-center flex flex-col`}
         >
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />

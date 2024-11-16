@@ -33,7 +33,7 @@ export function ProjectCard({ project }) {
 
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: isMobile ? 0.5 : 0.8,
+    threshold: isMobile ? 0.5 : 0.76,
   });
 
   const scrollToElement = (elementId) => {
@@ -56,7 +56,7 @@ export function ProjectCard({ project }) {
         ease: "easeOut",
         delay: inView ? 0 : 0.1,
       }}
-      className={`flex md:flex-row flex-col phone justify-between h-fit rounded-xl p-4 pb-3 ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
+      className={`flex md:flex-row flex-col phone justify-between h-fit rounded-xl p-4 pb-3 ${mode === "dark" ? "bg-zinc-900" : "bg-gray-200"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
     >
       <div className="md:w-1/2 md:pr-10 justify-start">
         <h1

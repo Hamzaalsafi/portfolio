@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useModeContext } from "./DarkModeProvider";
 import { motion } from "framer-motion";
-export function Nav({ scrollToHome, scrollToProjects }) {
+export function Nav({
+  scrollToHome,
+  scrollToProjects,
+  scrollToSkills,
+  HomeRef,
+  ProjectRef,
+  SkillsRef,
+}) {
   const [activeSection, setActiveSection] = useState("Home");
   const { mode, setMode } = useModeContext();
   const [scroll, setScroll] = useState(0);
@@ -12,6 +19,9 @@ export function Nav({ scrollToHome, scrollToProjects }) {
     if (section === "Home") {
       scrollToHome();
     }
+    if (section === "Skills") {
+      scrollToSkills();
+    }
   };
   const toggleMode = () => {
     setTimeout(() => {
@@ -21,19 +31,35 @@ export function Nav({ scrollToHome, scrollToProjects }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
+      // Get the position of each section
+      const homeRect = HomeRef.current?.getBoundingClientRect();
+      const projectRect = ProjectRef.current?.getBoundingClientRect();
+      const skillsRect = SkillsRef.current?.getBoundingClientRect();
+
       const viewportHeight = window.innerHeight;
 
-      if (scrollPosition < viewportHeight / 2) {
+      // Check if a section is in the viewport
+      if (
+        homeRect &&
+        homeRect.top <= viewportHeight / 2 &&
+        homeRect.bottom > viewportHeight / 2
+      ) {
         setActiveSection("Home");
-      } else if (scrollPosition < viewportHeight * 1.5) {
+      } else if (
+        projectRect &&
+        projectRect.top <= viewportHeight / 2 &&
+        projectRect.bottom > viewportHeight / 2
+      ) {
         setActiveSection("Projects");
-      } else if (scrollPosition < viewportHeight * 2.5) {
+      } else if (
+        skillsRect &&
+        skillsRect.top <= viewportHeight / 2 &&
+        skillsRect.bottom > viewportHeight / 2
+      ) {
         setActiveSection("Skills");
-      } else if (scrollPosition < viewportHeight * 3.5) {
-        setActiveSection("About");
       } else {
-        setActiveSection("Contact");
+        // Optionally, handle other sections like About or Contact
+        setActiveSection("OtherSection"); // Set this to the default section
       }
     };
 
@@ -42,7 +68,7 @@ export function Nav({ scrollToHome, scrollToProjects }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [HomeRef, ProjectRef, SkillsRef]); // Ensure this effect runs when refs change
   return (
     <div
       className={`w-screen text-md md:text-xl gap-3 md:gap-5  ${mode === "dark" ? "text-gray-200" : "text-black"} h-14 md:justify-center items-center flex relative navbar`}
