@@ -70,7 +70,7 @@
   max-width: 350px;
 
   stroke-dasharray: 324.9018249511719;
-  animation: 4s sss linear;
+  animation: 4s sss infinite linear;
 }
 
 @keyframes sss {
@@ -78,7 +78,7 @@
     stroke-dashoffset: 324.9018249511719;
   }
   100% {
-    stroke-dashoffset: 0;
+    stroke-dashoffset: 10;
   }
 }
 .svgoo2 {
