@@ -30,24 +30,13 @@ let frontEnd = {
   ],
 };
 let Backend = {
-  tooTip: [
-    "Firebase",
-    "Supabase",
-    "SQL",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
-    "TypeScript",
-  ],
+  tooTip: ["Firebase", "Supabase", "SQL", "Git", "GitHub"],
   ToolTipSvg: [
     "/Firebase.svg",
     "/supabase.svg",
     "/sql.svg",
-
-    "/nodejs.svg",
-    "/express.svg",
-    "/MongoDB.svg",
-    "/typeScript.svg",
+    "/git.svg",
+    "github.svg",
   ],
 };
 
@@ -64,11 +53,7 @@ export function Skills() {
     triggerOnce: false,
     threshold: 0.5,
   });
-  const { ref: ref2, inView: inView2 } = useInView({
-    triggerOnce: false,
-    threshold: 1,
-  });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 70, y: 70 });
   const [animatedPosition, setAnimatedPosition] = useState({ x: 0, y: 0 });
   const [blur, setBlur] = useState(false);
   const animationRef = useRef(null);
@@ -129,7 +114,7 @@ export function Skills() {
         src="/pokemon.svg"
         alt="pokemon"
       />
-      <div className="   flex justify-center pt-14 items-start">
+      <div className=" h-screen absolute   flex justify-center pt-14 items-start">
         <svg
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -300,7 +285,7 @@ export function Skills() {
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`flex z-10 p-4 mb-5 md:pb-14 border-red-700 border-2 border-opacity-50  max-w-[1000px] flex-col  md:mb-10 px-4 items-center justify-center h-fit rounded-xl  ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
+        className={`flex z-10 mb-5 md:pb-14 border-red-700 border-2 border-opacity-50 p-2 pb-4 md:p-4 m:pb-14  max-w-[1000px] flex-col  md:mb-10 px-4 items-center justify-center h-fit rounded-xl  ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
       >
         <h1
           className={`${mode === "dark" ? "text-gray-200" : "text-zinc-950"} text-2xl pb-4`}
@@ -345,10 +330,10 @@ export function Skills() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => handleTooltipClick(title)}
-                className="w-14 h-14 cursor-pointer p-0.5 donation rounded-full flex items-center justify-center"
+                className="w-12 h-12  md:w-14 md:h-14 cursor-pointer p-0.5 donation rounded-full flex items-center justify-center"
               >
                 <img
-                  className={`h-12 p-0.5 w-12 ${title === "Javascript" ? "rounded-full" : ""}`}
+                  className={`md:h-12 h-10 w-10 p-0.5 md:w-12 ${title === "Javascript" ? "rounded-full" : ""}`}
                   src={frontEnd.ToolTipSvg[index]}
                   alt={`${title} Logo`}
                 />
@@ -358,10 +343,9 @@ export function Skills() {
         </div>
       </div>
       <div
-        ref={ref2}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={`flex border-red-700 border-2 border-opacity-50 z-10 p-4 pb-14   max-w-[1000px] flex-col   px-4 items-center justify-center h-fit rounded-xl  ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
+        className={`flex border-red-700 border-2 border-opacity-50 z-10 p-2 pb-4 md:p-4 m:pb-14   max-w-[1000px] flex-col   px-4 items-center justify-center h-fit rounded-xl  ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
       >
         <h1
           className={`${mode === "dark" ? "text-gray-200" : "text-zinc-950"} text-2xl pb-4`}
@@ -406,10 +390,10 @@ export function Skills() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => handleTooltipClick(title)}
-                className={`w-14 h-14 ${title === "Node.js" || title === "Express.js" || title === "MongoDB" || title === "TypeScript" ? "bg-red-700" : ""} cursor-pointer p-0.5 donation rounded-full flex items-center justify-center`}
+                className={`w-12 h-12  md:w-14 md:h-14  cursor-pointer p-0.5 donation rounded-full flex items-center justify-center`}
               >
                 <img
-                  className={`h-12 p-0.5 w-12 ${title === "Typescript" ? "rounded-full p-1" : "rounded-lg"}`}
+                  className={`w-10 h-10  md:w-12 md:h-12 p-0.5  ${title === "GitHub" && mode === "dark" ? "bg-slate-50 rounded-full" : ""}`}
                   src={Backend.ToolTipSvg[index]}
                   alt={`${title} Logo`}
                 />
@@ -418,140 +402,6 @@ export function Skills() {
           ))}
         </div>
       </div>
-
-      <svg
-        className={`vg ${inView2 ? "opacity-100" : "hidden"} z-10`}
-        width="519"
-        height="94"
-        viewBox="0 0 519 94"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M109.662 30.0565C109.7 28.3462 111.275 27.3942 108.664 28.4292C101.609 31.2252 94.3575 35.196 89.3651 41.6198C86.3079 45.5536 83.656 49.9007 89.3347 51.8615C97.8786 54.8116 107.032 55.1307 115.1 59.8346C121.165 63.3709 128.642 71.3097 123.003 79.1154C120.329 82.8176 111.171 91.9801 106.423 88.0318C101.599 84.0203 106.367 78.0405 108.824 74.5884"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M154.275 11.5857C154.385 9.8568 154.684 8.14453 155.244 6.51931C155.561 5.60102 156.784 3.26063 156.924 4.23135C157.269 6.62324 156.357 9.72076 155.839 11.9639C153.994 19.9581 151.586 27.7888 149.66 35.7613C146.978 46.861 144.635 58.0728 142.777 69.379C141.969 74.2999 140.312 80.6928 141.311 85.7619C143.028 94.4666 152.397 83.1051 154.366 80.9283"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M176.802 56.0009C176.882 56.0009 176.89 55.9817 176.917 56.1244C177.287 58.0389 176.317 61.1704 175.965 62.8834C174.669 69.1794 172.078 75.654 173.335 82"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M183 36.0724C181.983 35.6978 181.65 36.8422 181 38"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M208 10C208 10.7913 207.95 11.5584 207.861 12.3474C206.524 24.1762 204.562 36.0079 202.177 47.6489C200.297 56.8322 197.419 65.6076 195.086 74.6462C194.497 76.9279 193.694 79.6469 194.119 82"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M225.95 11.3924C225.872 11.2884 225.969 11.0201 226.094 11.0027C226.438 10.9549 226.48 11.547 226.524 11.7471C227.321 15.3941 226.944 19.8221 226.634 23.4368C225.488 36.8151 222.071 49.4877 219.068 62.4488C217.97 67.1863 217.551 70.475 218.622 75"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M282.469 7.80103C283.559 6.35877 284.106 4.65059 285.097 3.16253C285.555 2.47504 285.774 4.18302 285.794 4.31086C286.592 9.50002 284.922 15.2329 283.349 20.03C279.342 32.2512 273.315 43.5488 268.237 55.2491C266.955 58.2023 260.783 69.2742 263.841 72.9511C266.119 75.6912 272.204 72.3136 274.434 71.2908C278.207 69.5598 281.882 67.5861 285.573 65.6638"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M303.825 52.2653C303.312 53.1399 302.238 54.123 302.021 55.1478C301.727 56.5305 305.648 55.049 305.854 54.9677C308.334 53.9888 326.195 44.1756 318.517 39.6958C314.118 37.1289 308.369 42.2336 305.798 45.7604C302.054 50.8978 299.311 58.5668 299.01 65.2529C298.504 76.492 317.45 68.0703 322 66.4235"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M354.564 44.3323C355.668 43.7616 355.468 42.4083 354.474 41.9151C351.652 40.5151 347.838 39.9082 344.817 40.4713C341.351 41.1171 335.744 40.7989 334.169 45.0848C332.137 50.6157 329.96 60.888 335.594 64.7179C340.811 68.2643 346.45 62.1189 348.832 57.3064C351.64 51.6318 354.304 40.7366 360.198 38.1465C361.319 37.654 361.138 38.4831 360.837 39.4427C358.839 45.8214 356.462 52.0394 354.542 58.4545C353.92 60.5324 350.616 68.5857 354.758 68.9792C357.376 69.2279 359.864 67.1935 362 65.7637"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M373.285 66.5172C373.641 64.042 373.232 61.3385 373.119 58.8605C372.699 49.642 372.391 40.428 372.171 31.2006C372.142 29.9667 371.538 18.9099 372.788 25.608C374.53 34.9413 373.677 44.9862 373.651 54.4395C373.64 58.3018 373.608 62.1775 373.944 66.0269C374.045 67.1923 374.074 69.8316 374.752 70.9151C375.043 71.379 375.023 69.8172 375.06 69.2532C375.283 65.8708 375.219 62.4736 375.271 59.0858C375.468 46.0425 376.983 15.8742 395 21.7502"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M402.928 62.5C401.053 64.3879 404.446 53.3761 404.471 53.0239C404.905 46.984 404.759 40.9482 404.403 34.9077C404.074 29.3203 402.928 23.1597 403.605 17.561C404.545 9.79086 405.649 33.1518 405.481 40.9911C405.261 51.2845 404.25 60.3534 400.58 69.7737C398.147 76.0188 404.054 56.7085 405.625 50.1238C406.743 45.4335 411.456 15.9499 421.048 23.9733C422.977 25.5862 423.549 28.4177 423.751 30.9349C424.328 38.1009 423.779 45.3566 423.341 52.5112C423.064 57.0452 422.727 61.5741 422.694 66.121C422.681 67.8289 422.69 66.587 422.69 65.8112"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M441.613 28C440.116 30.4213 441.718 34.23 441.898 36.7594C442.294 42.3452 439.015 55.6013 437.5 61"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M444 12.5222C442.076 11.9304 441.87 11.5638 442.054 13"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M487.285 40C486.625 39.225 490 33.3302 490.202 33C492.5 28 495.803 23.8134 498.735 19.7014C500.398 17.3693 503.266 14.0364 506.251 15.263C511.975 17.6147 514.691 26.1224 513.85 32.4746C512.912 39.5556 507.601 44.1406 502.011 46.4425C499.037 47.667 490.948 51.0166 488.355 47.294C485.21 42.779 488.175 35.8812 490.828 32.0448C492.855 29.1133 495 24 497.162 22"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M512.91 37.0281C512.91 45.6424 514.864 19.9433 515.717 11.3839C515.852 10.029 517.533 -0.515219 516.828 6.24143C516.009 14.1029 514.144 21.7128 513.563 29.6566C512.694 41.5594 510.493 54.079 511.322 66.0022C511.979 75.4551 514.944 85.3468 505.507 90.3511C502.436 91.9792 499.005 92.2615 495.687 91.8013C493.837 91.5446 489.639 91.2485 488.342 89.3557C485.824 85.679 497.973 77.4585 499.872 75.9565"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M130.451 54.3432C130.388 55.2909 128.937 55.2926 131.599 53.8221C140.072 49.142 148.923 45.5782 157 40"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <ellipse cx="67" cy="69.5" rx="22" ry="22.5" fill="#F24822" />
-        <path
-          d="M39 71.5C40.1046 71.5 41 70.6046 41 69.5C41 68.3954 40.1046 67.5 39 67.5V71.5ZM17.0809 0.585786C16.2998 -0.195262 15.0335 -0.195262 14.2525 0.585786L1.52454 13.3137C0.743488 14.0948 0.743488 15.3611 1.52454 16.1421C2.30558 16.9232 3.57191 16.9232 4.35296 16.1421L15.6667 4.82843L26.9804 16.1421C27.7614 16.9232 29.0278 16.9232 29.8088 16.1421C30.5899 15.3611 30.5899 14.0948 29.8088 13.3137L17.0809 0.585786ZM17.6667 46.1667V2H13.6667V46.1667H17.6667ZM39 67.5C27.2179 67.5 17.6667 57.9487 17.6667 46.1667H13.6667C13.6667 60.1579 25.0088 71.5 39 71.5V67.5Z"
-          fill="#B3B3B3"
-        />
-        <path
-          d="M457.298 57C455.422 58.8879 458.446 49.3761 458.471 49.0239C458.905 42.984 458.759 36.9482 458.403 30.9077C458.074 25.3203 456.928 19.1597 457.605 13.561C458.545 5.79086 459.649 29.1518 459.481 36.9911C459.261 47.2845 458.25 56.3534 454.58 65.7737C452.147 72.0188 458.054 52.7085 459.625 46.1238C460.743 41.4335 465.456 11.9499 475.048 19.9733C476.977 21.5862 477.549 24.4177 477.751 26.9349C478.328 34.1009 477.779 41.3566 477.341 48.5112C477.064 53.0452 476.727 57.5741 476.694 62.121C476.681 63.8289 476.69 62.587 476.69 61.8112"
-          stroke={` ${mode === "dark" ? "#e5e7eb" : "#1E1E1E"} `}
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
     </div>
   );
 }

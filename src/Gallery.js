@@ -18,14 +18,12 @@ export function Gallery({ images, link }) {
     }, 4000);
   };
 
-  // Start autoplay on component mount
   useEffect(() => {
     startAutoplay();
 
     return () => clearInterval(intervalRef.current);
   }, [images.length]);
 
-  // Scroll to gallery when it's in view
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -71,7 +69,7 @@ export function Gallery({ images, link }) {
       <motion.img
         src={images[currentIndex]}
         alt={`Image ${currentIndex + 1}`}
-        className="h-auto cursor-pointer max-h-[300px] md:max-h-[355px] w-auto "
+        className="h-auto cursor-pointer max-h-[200px] md:max-h-[355px] w-auto "
         onClick={handleLinkClickLink}
         loading="lazy"
         initial={{ opacity: 0 }}

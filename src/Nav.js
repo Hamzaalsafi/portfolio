@@ -89,7 +89,7 @@ export function Nav({
       
       `}
         >
-          {section === "Home" ? "ᕼᗩᗰᘔᗩ" : section}
+          {section === "Home" ? "Hamza" : section}
         </h1>
       ))}
 

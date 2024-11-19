@@ -97,37 +97,41 @@ function App() {
               <div
                 className={`flex-col ${mode === "dark" ? "text-gray-200" : "text-black"}    justify-start pt-4`}
               >
-                <h1 className="text-4xl font-bold  ">Hamza Alsafi</h1>
-                <h1 className="text-3xl py-3 ">Front-End /Ux,Ui Designer</h1>
+                <h1 className="md:text-4xl text-3xl font-bold  ">
+                  Hamza Alsafi
+                </h1>
+                <h1 className="text-2xl md:text-3xl py-3 ">
+                  Front-End & Ux/Ui Designer
+                </h1>
                 <div className="flex items-center gap-2">
                   <div className="flex flex-col gap-1 w-fit justify-center items-center mr-2">
                     <img
                       src={`${mode === "dark" ? "/location.svg" : "/locationDark.svg"}`}
                       alt="location"
-                      className="w-7 h-7  location"
+                      className="md:w-7 md:h-7 w-6 h-6  location"
                     />
                     <hr className="w-[120%] border-b-2 border-red-800  border-opacity-75" />
                   </div>
                   <h1
-                    className={`text-2xl ${mode === "dark" ? "text-gray-300" : "text-zinc-950"}`}
+                    className={`text-xl md:text-2xl ${mode === "dark" ? "text-gray-300" : "text-zinc-950"}`}
                   >
                     Amman,Jordan
                   </h1>
                 </div>
-                <h1 className="mt-6 text-3xl ">
+                <h1 className="mt-6 text-xl md:text-2xl ">
                   I specialize in{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700 animated-gradient-text to-red-500">
                     developing
                   </span>
                 </h1>
 
-                <h1 className="     pointer-events-none absolute   text-2xl">
+                <h1 className="     pointer-events-none absolute   text-xl md:text-2xl">
                   {text}
                   <Cursor />
                 </h1>
                 <div className="flex mt-8 md:mt-16   gap-4 py-6">
                   <motion.div
-                    className={`w-12 h-12   flex justify-center  cursor-pointer items-center  rounded-full shadow-lg`}
+                    className={`w-11 h-11 md:w-12 md:h-12    flex justify-center  cursor-pointer items-center  rounded-full shadow-lg`}
                     whileHover={{
                       rotate: 180,
                       scale: 1.2,
@@ -154,11 +158,11 @@ function App() {
                       }}
                       src={`${mode === "dark" ? "/linkedin.svg" : "/linkedinDark.svg"}`}
                       alt="LinkedIn Logo"
-                      className="w-12 h-12  "
+                      className="w-11 h-11 md:w-12 md:h-12  "
                     />
                   </motion.div>
                   <motion.div
-                    className="w-12 h-12  z-[1] flex cursor-pointer justify-center items-center  rounded-full shadow-lg" // Circular background for logo
+                    className="w-11 h-11 md:w-12 md:h-12  z-[1] flex cursor-pointer justify-center items-center  rounded-full shadow-lg" // Circular background for logo
                     whileHover={{
                       rotate: 180,
                       scale: 1.15,
@@ -185,12 +189,12 @@ function App() {
                       }}
                       src="/github.svg"
                       alt="github Logo"
-                      className="w-12 h-12 bg-gray-200 border border-gray-200 border-opacity-55 rounded-full "
+                      className="w-11 h-11 md:w-12 md:h-12 bg-gray-200 border border-gray-200 border-opacity-55 rounded-full "
                     />{" "}
                     {/* LinkedIn SVG logo */}
                   </motion.div>
                   <motion.div
-                    className="w-12 h-12 overflow-none flex cursor-pointer justify-center items-center rounded-full shadow-lg"
+                    className="w-11 h-11 md:w-12 md:h-12overflow-none flex cursor-pointer justify-center items-center rounded-full shadow-lg"
                     whileHover={{
                       rotate: 180,
                       scale: 1.15,
@@ -220,7 +224,7 @@ function App() {
                     />
                   </motion.div>
                   <motion.div
-                    className="w-12 h-12   flex cursor-pointer justify-center items-center  rounded-full shadow-lg" // Circular background for logo
+                    className="w-11 h-11 md:w-12 md:h-12  flex cursor-pointer justify-center items-center  rounded-full shadow-lg" // Circular background for logo
                     whileHover={{
                       rotate: 180,
                       scale: 1.15,
@@ -246,7 +250,7 @@ function App() {
                       }}
                       src={`${mode === "dark" ? "/cv.svg" : "/cvdark.svg"}`}
                       alt="cv Logo"
-                      className="w-12 h-12 "
+                      className="w-11 h-11 md:w-12 md:h-12"
                     />
                   </motion.div>
                 </div>

@@ -67,13 +67,13 @@ export function ProjectCard({ project }) {
         </h1>
         <h2 className="text-lg pt-1 font-bold">{project.title2 || " "}</h2>
         <p
-          className={`text-[1.17rem] ${mode !== "dark" ? "text-zinc-800" : "text-zinc-300"}`}
+          className={`text-md md:text-[1.17rem] ${mode !== "dark" ? "text-zinc-800" : "text-zinc-300"}`}
         >
           {project.description || " "}
         </p>
         <h2 className="text-lg py-1 font-bold">Key Features:</h2>
         <ul
-          className={`list-disc text-[1.1rem] pl-5 ${mode !== "dark" ? "text-zinc-800" : "text-zinc-300"}`}
+          className={`list-disc text-md md:text-[1.1rem] pl-5 ${mode !== "dark" ? "text-zinc-800" : "text-zinc-300"}`}
         >
           {project.keyFeatures &&
             project.keyFeatures.map((li, index) => <li key={index}>{li}</li>)}
@@ -132,12 +132,12 @@ export function ProjectCard({ project }) {
       </div>
 
       <div className="md:w-1/2 md:mb-0 mb-5 relative">
-        <div className="md:absolute relative z-50 text-slate-950 text-3xl gap-5 text-center mb-2 w-full flex justify-center items-center">
+        <div className="md:absolute relative z-50 text-slate-950 text-2xl md:text-3xl gap-5 text-center mb-2 w-full flex justify-center items-center">
           <motion.img
             onClick={(e) => {
               e.preventDefault();
               setShowOptions("iphone");
-              scrollToElement("iphone-section"); // Scroll to the section on click
+              scrollToElement("iphone-section");
             }}
             src="/iphone.svg"
             alt="Iphone"
@@ -163,7 +163,7 @@ export function ProjectCard({ project }) {
             onClick={(e) => {
               e.preventDefault();
               setShowOptions("laptop");
-              scrollToElement("laptop-section"); // Scroll to the section on click
+              scrollToElement("laptop-section");
             }}
             src="/laptop2.svg"
             alt="Laptop"

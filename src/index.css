@@ -105,7 +105,7 @@
   }
 }
 .pokemon {
-  animation: rotate 8s linear infinite; /* Infinite smooth rotation */
+  animation: rotate 10s linear infinite;
 }
 
 @keyframes rotate {
@@ -381,7 +381,7 @@
     flex-direction: column-reverse;
   }
   .svgoo2 {
-    width: 45%;
+    width: 75%;
     height: auto;
   }
 }
