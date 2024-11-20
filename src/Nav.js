@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useModeContext } from "./DarkModeProvider";
 import { motion } from "framer-motion";
 export function Nav({
   scrollToHome,
   scrollToProjects,
   scrollToSkills,
+  scrollToAboutMe,
+  AboutMeRef,
   HomeRef,
   ProjectRef,
   SkillsRef,
 }) {
   const [activeSection, setActiveSection] = useState("Home");
   const { mode, setMode } = useModeContext();
-  const [scroll, setScroll] = useState(0);
+
   const handleSectionClick = (section) => {
     if (section === "Projects") {
       scrollToProjects();
@@ -21,6 +23,9 @@ export function Nav({
     }
     if (section === "Skills") {
       scrollToSkills();
+    }
+    if (section === "About") {
+      scrollToAboutMe();
     }
   };
   const toggleMode = () => {
@@ -35,7 +40,7 @@ export function Nav({
       const homeRect = HomeRef.current?.getBoundingClientRect();
       const projectRect = ProjectRef.current?.getBoundingClientRect();
       const skillsRect = SkillsRef.current?.getBoundingClientRect();
-
+      const aboutRect = AboutMeRef.current?.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
       if (
@@ -56,6 +61,12 @@ export function Nav({
         skillsRect.bottom > viewportHeight / 2
       ) {
         setActiveSection("Skills");
+      } else if (
+        aboutRect &&
+        aboutRect.top <= viewportHeight / 2 &&
+        aboutRect.bottom > viewportHeight / 2
+      ) {
+        setActiveSection("About");
       } else {
         setActiveSection("OtherSection");
       }
@@ -66,7 +77,7 @@ export function Nav({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [HomeRef, ProjectRef, SkillsRef]); // Ensure this effect runs when refs change
+  }, [HomeRef, ProjectRef, SkillsRef, AboutMeRef]);
   return (
     <div
       className={`w-screen text-md md:text-xl gap-3 md:gap-5  ${mode === "dark" ? "text-gray-200" : "text-black"} h-14 md:justify-center items-center flex relative navbar`}

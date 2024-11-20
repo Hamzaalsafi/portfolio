@@ -1,7 +1,8 @@
-import React from "react";
 import { useModeContext } from "./DarkModeProvider";
-
-import { ProjectCard } from "./ProjectCard";
+import { lazy } from "react";
+const ProjectCard = lazy(() => {
+  return import("./ProjectCard");
+});
 let projects = [
   {
     title: "KittyTask",
@@ -123,7 +124,7 @@ let projects = [
   },
 ];
 
-export function Project() {
+export default function Project() {
   const { mode } = useModeContext();
   return (
     <div

@@ -1,21 +1,23 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy } from "react";
 import { motion } from "framer-motion";
-import { useTypewriter, cursor, Cursor } from "react-simple-typewriter";
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { Nav } from "./Nav";
-import { Project } from "./Project";
 import { MorphingBubble } from "./MorphingBubble";
 import { useModeContext } from "./DarkModeProvider";
-
 import { Loading } from "./Loading";
-import { Skills } from "./Skills";
+const Project = lazy(() => {
+  return import("./Project");
+});
+const Keyboard = lazy(() => import("./Keyboard"));
+const Skills = lazy(() => import("./Skills"));
 function App() {
   const { mode } = useModeContext();
   const [loading, setLoading] = useState(true);
   const Home = useRef(null);
   const Projects = useRef(null);
   const skills = useRef(null);
+  const AboutMe = useRef(null);
   const handleLinkClickLinkedin = () => {
     window.open("www.linkedin.com/in/hamza-alsafi-b52401272", "_blank");
   };
@@ -54,6 +56,7 @@ function App() {
   };
 
   const scrollToHome = () => smoothScrollTo(Home.current);
+  const scrollToAboutMe = () => smoothScrollTo(AboutMe.current);
   const scrollToSkills = () => smoothScrollTo(skills.current);
   const scrollToProjects = () => smoothScrollTo(Projects.current);
   const [text] = useTypewriter({
@@ -86,8 +89,10 @@ function App() {
               HomeRef={Home}
               ProjectRef={Projects}
               SkillsRef={skills}
+              AboutMeRef={AboutMe}
               scrollToSkills={scrollToSkills}
               scrollToHome={scrollToHome}
+              scrollToAboutMe={scrollToAboutMe}
               scrollToProjects={scrollToProjects}
             />
             <div className="  w-[100%] max-w-[950px] h-screen justify-between  flex-col md:flex-row flex md:justify-between  items-center p-20 px-2 md:px-4 ">
@@ -270,8 +275,11 @@ function App() {
             <Project />
           </div>
           <div ref={skills}>
-            {" "}
             <Skills />
+          </div>
+
+          <div ref={AboutMe}>
+            <Keyboard AboutMeRef={AboutMe} />
           </div>
         </div>
       )}

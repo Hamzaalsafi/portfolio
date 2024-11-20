@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export function Gallery({ images, link }) {
+export default function Gallery({ images, link }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
   const handleLinkClickLink = () => {

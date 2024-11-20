@@ -40,7 +40,7 @@ let Backend = {
   ],
 };
 
-export function Skills() {
+export default function Skills() {
   const [activeTooltip, setActiveTooltip] = useState(null);
   const handleTooltipClick = (tooltipName) => {
     if (activeTooltip === tooltipName) {
@@ -51,7 +51,7 @@ export function Skills() {
   };
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.5,
+    threshold: 0.6,
   });
   const [mousePosition, setMousePosition] = useState({ x: 70, y: 70 });
   const [animatedPosition, setAnimatedPosition] = useState({ x: 0, y: 0 });
@@ -79,16 +79,18 @@ export function Skills() {
   };
 
   useEffect(() => {
-    animationRef.current = requestAnimationFrame(animatePosition);
-    return () => cancelAnimationFrame(animationRef.current);
-  }, [mousePosition]);
+    if (inView) {
+      animationRef.current = requestAnimationFrame(animatePosition);
+      return () => cancelAnimationFrame(animationRef.current);
+    }
+  }, [mousePosition, inView]);
 
   const { mode } = useModeContext();
   return (
     <div
       onMouseMove={handleMouseMove}
       ref={ref}
-      className={`w-screen select-none px-2 relative h-screen ${mode === "dark" ? "app" : "app2"} overflow-hidden justify-center app flex flex-col items-center`}
+      className={`w-screen  px-2 relative h-screen ${mode === "dark" ? "app" : "app2"} overflow-hidden justify-center app flex flex-col items-center`}
     >
       <motion.img
         initial={{
@@ -282,10 +284,15 @@ export function Skills() {
         </svg>
       </div>
       <div className=" justify-center  mt-14  flex-col"></div>
-      <div
+      <motion.div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={`flex z-10 mb-5 md:pb-14 border-red-700 border-2 border-opacity-50 p-2 pb-4 md:p-4 m:pb-14  max-w-[1000px] flex-col  md:mb-10 px-4 items-center justify-center h-fit rounded-xl  ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: inView ? 1 : 0.15,
+          transition: { duration: 0.5, ease: "easeInOut" },
+        }}
       >
         <h1
           className={`${mode === "dark" ? "text-gray-200" : "text-zinc-950"} text-2xl pb-4`}
@@ -326,9 +333,9 @@ export function Skills() {
                     damping: 20,
                   },
                 }}
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0.01 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                exit={{ opacity: 0.01 }}
                 onClick={() => handleTooltipClick(title)}
                 className="w-12 h-12  md:w-14 md:h-14 cursor-pointer p-0.5 donation rounded-full flex items-center justify-center"
               >
@@ -341,11 +348,16 @@ export function Skills() {
             </Tooltip>
           ))}
         </div>
-      </div>
-      <div
+      </motion.div>
+      <motion.div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={`flex border-red-700 border-2 border-opacity-50 z-10 p-2 pb-4 md:p-4 m:pb-14   max-w-[1000px] flex-col   px-4 items-center justify-center h-fit rounded-xl  ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
+        initial={{ opacity: 0.01 }}
+        animate={{
+          opacity: inView ? 1 : 0.15,
+          transition: { duration: 0.4, ease: "easeInOut" },
+        }}
       >
         <h1
           className={`${mode === "dark" ? "text-gray-200" : "text-zinc-950"} text-2xl pb-4`}
@@ -386,9 +398,9 @@ export function Skills() {
                     damping: 20,
                   },
                 }}
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0.01 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+                exit={{ opacity: 0.01 }}
                 onClick={() => handleTooltipClick(title)}
                 className={`w-12 h-12  md:w-14 md:h-14  cursor-pointer p-0.5 donation rounded-full flex items-center justify-center`}
               >
@@ -401,7 +413,7 @@ export function Skills() {
             </Tooltip>
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

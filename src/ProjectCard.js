@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Gallery } from "./Gallery";
+
 import { motion } from "framer-motion";
 import { useModeContext } from "./DarkModeProvider";
 import Tooltip from "@mui/material/Tooltip";
 import { useInView } from "react-intersection-observer";
-
-export function ProjectCard({ project }) {
+import { lazy } from "react";
+const Gallery = lazy(() => {
+  return import("./Gallery");
+});
+export default function ProjectCard({ project }) {
   const handleLinkClickLink = () => {
     window.open(project.link, "_blank");
   };
@@ -33,7 +36,7 @@ export function ProjectCard({ project }) {
 
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: isMobile ? 0.5 : 0.76,
+    threshold: isMobile ? 0.5 : 0.79,
   });
 
   const scrollToElement = (elementId) => {
@@ -52,7 +55,7 @@ export function ProjectCard({ project }) {
         y: inView ? 0 : 20,
       }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
         ease: "easeOut",
         delay: inView ? 0 : 0.1,
       }}
@@ -185,14 +188,15 @@ export function ProjectCard({ project }) {
             }}
           />
         </div>
+        <div className={`h-full w-full ${inView ? "block" : "hidden"}`}>
+          {showOptions === "laptop" && (
+            <Gallery images={project.macImages} link={project.link} />
+          )}
 
-        {showOptions === "laptop" && (
-          <Gallery images={project.macImages} link={project.link} />
-        )}
-
-        {showOptions === "iphone" && (
-          <Gallery images={project.phoneImages} link={project.link} />
-        )}
+          {showOptions === "iphone" && (
+            <Gallery images={project.phoneImages} link={project.link} />
+          )}
+        </div>
       </div>
     </motion.div>
   );
