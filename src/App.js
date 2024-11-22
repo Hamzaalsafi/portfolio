@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { Nav } from "./Nav";
 import { MorphingBubble } from "./MorphingBubble";
+import { Analytics } from "@vercel/analytics/react";
 import { useModeContext } from "./DarkModeProvider";
 import { Loading } from "./Loading";
 const Project = lazy(() => {
@@ -311,6 +312,7 @@ function App() {
           </div>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }

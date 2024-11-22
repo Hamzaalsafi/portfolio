@@ -195,7 +195,7 @@ export default function ProjectCard({ project }) {
             }}
           />
         </div>
-        <div className={`h-full w-full ${inView ? "block" : "hidden"}`}>
+        <div className={`h-full w-full `}>
           {showOptions === "laptop" && (
             <Gallery images={project.macImages} link={project.link} />
           )}
