@@ -64,7 +64,7 @@ export default function Gallery({ images, link }) {
         ease: [0.68, -0.55, 0.27, 1.55],
       }}
       ref={scrollRef}
-      className="relative rounded-xl flex flex-col items-center justify-center w-full h-full"
+      className="relative rounded-xl flex items-center justify-center w-full h-full"
     >
       <motion.img
         src={images[currentIndex]}
@@ -77,11 +77,11 @@ export default function Gallery({ images, link }) {
         transition={{ duration: 1 }}
       />
 
-      <div className=" relative bottom-4 left-1/2  transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-[-15px] md:bottom-4 left-1/2  transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <motion.div
             animate={{
-              width: currentIndex === index ? "25px" : "12px",
+              width: currentIndex === index ? "30px" : "18px",
               backgroundColor:
                 currentIndex === index
                   ? "rgba(239, 68, 68, 1)"
@@ -94,12 +94,12 @@ export default function Gallery({ images, link }) {
             }}
             whileHover={{
               scale: currentIndex === index ? 1.3 : 1.1,
-              width: currentIndex === index ? "20px" : "17px",
+              width: currentIndex === index ? "23px" : "20px",
               boxShadow: "0px 0px 10px rgba(239, 68, 68, 0.5)",
             }}
             key={index}
             onClick={() => handleBubbleClick(index)}
-            className={` h-2.5 cursor-pointer  duration-350 shadow-xl p-1 border-2 border-opacity-25 border-red-700 rounded-full ${currentIndex === index ? "w-7 " : "w-3"} bg-gray-300 transition-all`}
+            className={` h-2.5 cursor-pointer  duration-350 shadow-xl p-1 border-2 border-opacity-25 border-red-700 rounded-full ${currentIndex === index ? "w-7 " : "w-4"} bg-gray-300 transition-all`}
           ></motion.div>
         ))}
       </div>

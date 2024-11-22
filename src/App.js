@@ -27,6 +27,10 @@ function App() {
       "_blank"
     );
   };
+  const openCV = () => {
+    window.open("/CV.pdf", "_blank");
+  };
+
   const handleLinkClickGithub = () => {
     window.open("https://github.com/Hamzaalsafi", "_blank");
   };
@@ -219,7 +223,6 @@ function App() {
                       alt="github Logo"
                       className="w-11 h-11 md:w-12 md:h-12 bg-gray-200 border border-gray-200 border-opacity-55 rounded-full "
                     />{" "}
-                    {/* LinkedIn SVG logo */}
                   </motion.div>
                   <motion.div
                     onClick={scrollToContact}
@@ -254,6 +257,7 @@ function App() {
                     />
                   </motion.div>
                   <motion.div
+                    onClick={openCV}
                     className="w-11 h-11 md:w-12 md:h-12  flex cursor-pointer justify-center items-center  rounded-full shadow-lg" // Circular background for logo
                     whileHover={{
                       rotate: 180,

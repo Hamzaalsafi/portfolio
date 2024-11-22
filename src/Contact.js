@@ -80,6 +80,9 @@ export default function Contact() {
         }
       );
   };
+  const openCV = () => {
+    window.open("/CV.pdf", "_blank");
+  };
   return (
     <div
       ref={ref}
@@ -282,6 +285,7 @@ export default function Contact() {
             style={{ willChange: "transform, opacity" }}
           >
             <motion.img
+              onClick={openCV}
               key={mode}
               animate={{
                 opacity: [0, 1],
