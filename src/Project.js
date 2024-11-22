@@ -26,13 +26,7 @@ let projects = [
       "/vite.png",
       "/github.svg",
     ],
-    macImages: [
-      "/KittyTask1.PNG",
-      "/KittyTask2.PNG",
-      "/kittyTask3.PNG",
-      "/kittyTask4.PNG",
-      "/kittyTask5.PNG",
-    ],
+    macImages: ["k1.png", "k2.png", "k3.png", "k4.png", "k5.png"],
     phoneImages: [
       "/kittyTaskPhone2.png",
       "/kittyTaskPhone1.png",
