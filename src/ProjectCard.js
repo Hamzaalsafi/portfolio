@@ -36,7 +36,7 @@ export default function ProjectCard({ project }) {
 
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: isMobile ? 0.5 : 0.79,
+    threshold: isMobile ? 0.4 : 0.79,
   });
 
   const scrollToElement = (elementId) => {

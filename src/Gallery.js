@@ -77,7 +77,7 @@ export default function Gallery({ images, link }) {
         transition={{ duration: 1 }}
       />
 
-      <div className="absolute bottom-4 left-1/2  transform -translate-x-1/2 flex space-x-2">
+      <div className=" relative bottom-4 left-1/2  transform -translate-x-1/2 flex space-x-2">
         {images.map((_, index) => (
           <motion.div
             animate={{
