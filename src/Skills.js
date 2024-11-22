@@ -51,39 +51,51 @@ export default function Skills() {
   };
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.6,
+    threshold: 0.5,
   });
-  const [mousePosition, setMousePosition] = useState({ x: 70, y: 70 });
-  const [animatedPosition, setAnimatedPosition] = useState({ x: 0, y: 0 });
-  const [blur, setBlur] = useState(false);
+
+  const mouseRef = useRef({ x: 70, y: 70 });
+  const [animatedPosition, setAnimatedPosition] = useState({ x: 70, y: 70 });
   const animationRef = useRef(null);
+  const [blur, setBlur] = useState(false);
 
   const handleMouseMove = (event) => {
-    setMousePosition({
+    mouseRef.current = {
       x: event.clientX,
       y: event.clientY,
-    });
+    };
   };
-  const handleMouseEnter = () => {
-    setBlur(true);
-  };
-  const handleMouseLeave = () => {
-    setBlur(false);
-  };
+
+  const handleMouseEnter = () => setBlur(true);
+  const handleMouseLeave = () => setBlur(false);
+
   const animatePosition = () => {
-    setAnimatedPosition((prev) => ({
-      x: prev.x + (mousePosition.x - prev.x) * 0.07,
-      y: prev.y + (mousePosition.y - prev.y) * 0.07,
-    }));
+    setAnimatedPosition((prev) => {
+      const newX = prev.x + (mouseRef.current.x - prev.x) * 0.07;
+      const newY = prev.y + (mouseRef.current.y - prev.y) * 0.07;
+
+      // Only update state if there's a significant change
+      if (Math.abs(newX - prev.x) > 0.1 || Math.abs(newY - prev.y) > 0.1) {
+        return { x: newX, y: newY };
+      }
+      return prev;
+    });
     animationRef.current = requestAnimationFrame(animatePosition);
   };
 
   useEffect(() => {
     if (inView) {
       animationRef.current = requestAnimationFrame(animatePosition);
-      return () => cancelAnimationFrame(animationRef.current);
+    } else {
+      cancelAnimationFrame(animationRef.current);
     }
-  }, [mousePosition, inView]);
+    return () => cancelAnimationFrame(animationRef.current);
+  }, [inView]);
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const { mode } = useModeContext();
   return (
@@ -325,7 +337,6 @@ export default function Skills() {
             >
               <motion.div
                 whileHover={{
-                  rotate: 180,
                   scale: 1.15,
                   transition: {
                     type: "spring",
@@ -390,17 +401,17 @@ export default function Skills() {
             >
               <motion.div
                 whileHover={{
-                  rotate: 180,
-                  scale: 1.15,
+                  scale: 1.12,
                   transition: {
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 20,
+                    type: "tween",
+                    ease: "easeOut",
+                    duration: 0.1,
                   },
                 }}
-                initial={{ opacity: 0.01 }}
+                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                exit={{ opacity: 0.01 }}
+                exit={{ opacity: 0 }}
+                style={{ willChange: "transform, opacity" }}
                 onClick={() => handleTooltipClick(title)}
                 className={`w-12 h-12  md:w-14 md:h-14  cursor-pointer p-0.5 donation rounded-full flex items-center justify-center`}
               >

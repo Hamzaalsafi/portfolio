@@ -6,7 +6,9 @@ export function Nav({
   scrollToProjects,
   scrollToSkills,
   scrollToAboutMe,
+  scrollToContact,
   AboutMeRef,
+  ContactRef,
   HomeRef,
   ProjectRef,
   SkillsRef,
@@ -15,19 +17,28 @@ export function Nav({
   const { mode, setMode } = useModeContext();
 
   const handleSectionClick = (section) => {
-    if (section === "Projects") {
-      scrollToProjects();
-    }
-    if (section === "Home") {
-      scrollToHome();
-    }
-    if (section === "Skills") {
-      scrollToSkills();
-    }
-    if (section === "About") {
-      scrollToAboutMe();
+    switch (section) {
+      case "Projects":
+        scrollToProjects();
+        break;
+      case "Home":
+        scrollToHome();
+        break;
+      case "Skills":
+        scrollToSkills();
+        break;
+      case "About":
+        scrollToAboutMe();
+        break;
+      case "Contact":
+        scrollToContact();
+        break;
+      default:
+        break;
     }
   };
+
+  // Toggle between light and dark mode
   const toggleMode = () => {
     setTimeout(() => {
       setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
@@ -35,40 +46,37 @@ export function Nav({
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Get the position of each section
-      const homeRect = HomeRef.current?.getBoundingClientRect();
-      const projectRect = ProjectRef.current?.getBoundingClientRect();
-      const skillsRect = SkillsRef.current?.getBoundingClientRect();
-      const aboutRect = AboutMeRef.current?.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+    let ticking = false;
 
-      if (
-        homeRect &&
-        homeRect.top <= viewportHeight / 2 &&
-        homeRect.bottom > viewportHeight / 2
-      ) {
-        setActiveSection("Home");
-      } else if (
-        projectRect &&
-        projectRect.top <= viewportHeight / 2 &&
-        projectRect.bottom > viewportHeight / 2
-      ) {
-        setActiveSection("Projects");
-      } else if (
-        skillsRect &&
-        skillsRect.top <= viewportHeight / 2 &&
-        skillsRect.bottom > viewportHeight / 2
-      ) {
-        setActiveSection("Skills");
-      } else if (
-        aboutRect &&
-        aboutRect.top <= viewportHeight / 2 &&
-        aboutRect.bottom > viewportHeight / 2
-      ) {
-        setActiveSection("About");
-      } else {
-        setActiveSection("OtherSection");
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const viewportHeight = window.innerHeight / 1.8;
+
+          const sectionRects = {
+            Home: HomeRef.current?.getBoundingClientRect(),
+            Projects: ProjectRef.current?.getBoundingClientRect(),
+            Skills: SkillsRef.current?.getBoundingClientRect(),
+            About: AboutMeRef.current?.getBoundingClientRect(),
+            Contact: ContactRef.current?.getBoundingClientRect(),
+          };
+
+          for (const [section, rect] of Object.entries(sectionRects)) {
+            if (
+              rect &&
+              rect.top <= viewportHeight &&
+              rect.bottom > viewportHeight
+            ) {
+              if (activeSection !== section) {
+                setActiveSection(section);
+              }
+              break;
+            }
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -77,7 +85,7 @@ export function Nav({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [HomeRef, ProjectRef, SkillsRef, AboutMeRef]);
+  }, [HomeRef, ProjectRef, SkillsRef, AboutMeRef, activeSection]);
   return (
     <div
       className={`w-screen text-md md:text-xl gap-3 md:gap-5  ${mode === "dark" ? "text-gray-200" : "text-black"} h-14 md:justify-center items-center flex relative navbar`}

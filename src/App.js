@@ -11,6 +11,7 @@ const Project = lazy(() => {
 });
 const Keyboard = lazy(() => import("./Keyboard"));
 const Skills = lazy(() => import("./Skills"));
+const Contact = lazy(() => import("./Contact"));
 function App() {
   const { mode } = useModeContext();
   const [loading, setLoading] = useState(true);
@@ -18,13 +19,29 @@ function App() {
   const Projects = useRef(null);
   const skills = useRef(null);
   const AboutMe = useRef(null);
+  const ContactRef = useRef(null);
   const handleLinkClickLinkedin = () => {
-    window.open("www.linkedin.com/in/hamza-alsafi-b52401272", "_blank");
+    window.open(
+      "https://www.linkedin.com/in/hamza-alsafi-b52401272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "_blank"
+    );
   };
   const handleLinkClickGithub = () => {
     window.open("https://github.com/Hamzaalsafi", "_blank");
   };
+  useEffect(() => {
+    const preventSpaceScroll = (e) => {
+      if (e.code === "Space") {
+        e.preventDefault();
+      }
+    };
 
+    window.addEventListener("keydown", preventSpaceScroll);
+
+    return () => {
+      window.removeEventListener("keydown", preventSpaceScroll);
+    };
+  }, []);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -56,6 +73,7 @@ function App() {
   };
 
   const scrollToHome = () => smoothScrollTo(Home.current);
+  const scrollToContact = () => smoothScrollTo(ContactRef.current);
   const scrollToAboutMe = () => smoothScrollTo(AboutMe.current);
   const scrollToSkills = () => smoothScrollTo(skills.current);
   const scrollToProjects = () => smoothScrollTo(Projects.current);
@@ -72,9 +90,9 @@ function App() {
     ],
 
     loop: true,
-    typeSpeed: 90,
-    deleteSpeed: 60,
-    delaySpeed: 500,
+    typeSpeed: 70,
+    deleteSpeed: 50,
+    delaySpeed: 100,
   });
   return (
     <div>
@@ -90,12 +108,14 @@ function App() {
               ProjectRef={Projects}
               SkillsRef={skills}
               AboutMeRef={AboutMe}
+              ContactRef={ContactRef}
+              scrollToContact={scrollToContact}
               scrollToSkills={scrollToSkills}
               scrollToHome={scrollToHome}
               scrollToAboutMe={scrollToAboutMe}
               scrollToProjects={scrollToProjects}
             />
-            <div className="  w-[100%] max-w-[950px] h-screen justify-between  flex-col md:flex-row flex md:justify-between  items-center p-20 px-2 md:px-4 ">
+            <div className="  w-[100%] max-w-[950px] h-screen justify-between  flex-col md:flex-row flex md:justify-between  items-center p-20 px-2 lg:px-4 ">
               <div className="flex-col">
                 <MorphingBubble />
               </div>
@@ -139,11 +159,12 @@ function App() {
                     className={`w-11 h-11 md:w-12 md:h-12    flex justify-center  cursor-pointer items-center  rounded-full shadow-lg`}
                     whileHover={{
                       rotate: 180,
-                      scale: 1.2,
+                      scale: 1.15,
                       transition: {
                         type: "spring",
-                        stiffness: 300,
+                        stiffness: 250,
                         damping: 20,
+                        mass: 1,
                       },
                     }}
                     initial={{ opacity: 0 }}
@@ -173,8 +194,9 @@ function App() {
                       scale: 1.15,
                       transition: {
                         type: "spring",
-                        stiffness: 300,
+                        stiffness: 250,
                         damping: 20,
+                        mass: 1,
                       },
                     }}
                     initial={{ opacity: 0 }}
@@ -199,14 +221,16 @@ function App() {
                     {/* LinkedIn SVG logo */}
                   </motion.div>
                   <motion.div
+                    onClick={scrollToContact}
                     className="w-11 h-11 md:w-12 md:h-12overflow-none flex cursor-pointer justify-center items-center rounded-full shadow-lg"
                     whileHover={{
                       rotate: 180,
                       scale: 1.15,
                       transition: {
                         type: "spring",
-                        stiffness: 300,
+                        stiffness: 250,
                         damping: 20,
+                        mass: 1,
                       },
                     }}
                     initial={{ opacity: 0 }}
@@ -235,8 +259,9 @@ function App() {
                       scale: 1.15,
                       transition: {
                         type: "spring",
-                        stiffness: 300,
+                        stiffness: 250,
                         damping: 20,
+                        mass: 1,
                       },
                     }}
                     initial={{ opacity: 0 }}
@@ -280,6 +305,9 @@ function App() {
 
           <div ref={AboutMe}>
             <Keyboard AboutMeRef={AboutMe} />
+          </div>
+          <div ref={ContactRef}>
+            <Contact />
           </div>
         </div>
       )}

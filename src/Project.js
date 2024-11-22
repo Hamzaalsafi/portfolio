@@ -17,13 +17,14 @@ let projects = [
       "Intuitive, user-friendly interface",
       "Fast and responsive design",
     ],
-    tooTip: ["React", "Tailwind", "CSS", "Firebase", "Vite"],
+    tooTip: ["React", "Tailwind", "CSS", "Firebase", "Vite", "Github"],
     ToolTipSvg: [
       "/react.svg",
       "/tailwind.png",
       "/css.svg",
       "/firebase.svg",
       "/vite.png",
+      "/github.svg",
     ],
     macImages: [
       "/kittyTask1.png",
@@ -38,6 +39,7 @@ let projects = [
       "/kittyTaskPhone3.png",
     ],
     link: "https://hamzaalsafi.github.io/KittyTask2/",
+    gitHubLink: "https://github.com/Hamzaalsafi/KittyTask2",
   },
   {
     title: "Share the Giving",
@@ -51,13 +53,14 @@ let projects = [
       "Comprehensive forms for selecting specialization, subject, and resource type",
       "Modern, responsive, and engaging design",
     ],
-    tooTip: ["React", "Tailwind", "CSS", "Supabase", "Bootstrap"],
+    tooTip: ["React", "Tailwind", "CSS", "Supabase", "Bootstrap", "Github"],
     ToolTipSvg: [
       "/react.svg",
       "/tailwind.png",
       "/css.svg",
       "/Supabase.svg",
       "/Bootstrap.svg",
+      "/github.svg",
     ],
     macImages: ["/shark1.png", "/shark2.png", "/shark3.png", "/shark4.png"],
     phoneImages: [
@@ -68,6 +71,7 @@ let projects = [
       "/sharkphone4.png",
     ],
     link: "https://sharikataa.vercel.app/",
+    gitHubLink: "https://github.com/Hamzaalsafi/-",
   },
   {
     title: "Amazon Clone",
@@ -81,8 +85,8 @@ let projects = [
       "Dynamic Product Listings, Easy updates without code changes.",
       "Filters & Detailed Product Pages",
     ],
-    tooTip: ["React", "CSS", "Firebase"],
-    ToolTipSvg: ["/react.svg", "/css.svg", "/firebase.svg"],
+    tooTip: ["React", "CSS", "Firebase", "Github"],
+    ToolTipSvg: ["/react.svg", "/css.svg", "/firebase.svg", "/github.svg"],
     macImages: [
       "/amazon1.png",
       "/amazon2.png",
@@ -102,6 +106,7 @@ let projects = [
       "/amazoniphone8.png",
     ],
     link: "https://hamzaalsafi.github.io/Amazon/",
+    gitHubLink: "https://github.com/Hamzaalsafi/Amazon",
   },
   {
     title: "Interactive Drawing Tool",
@@ -116,11 +121,12 @@ let projects = [
       "Save & Delete",
       "Smooth Animations & User-Friendly Interface",
     ],
-    tooTip: ["HTML", "CSS", "javascript"],
-    ToolTipSvg: ["/HTML.svg", "/css.svg", "/javascript.svg"],
+    tooTip: ["HTML", "CSS", "javascript", "Github"],
+    ToolTipSvg: ["/HTML.svg", "/css.svg", "/javascript.svg", "/github.svg"],
     macImages: ["/drawing1.png", "/drawing2.png", "/drawing3.png"],
     phoneImages: ["/draingphone.png"],
     link: "https://drawing-five-theta.vercel.app/",
+    gitHubLink: "https://github.com/Hamzaalsafi/Interactive-Drawing-Tool",
   },
 ];
 

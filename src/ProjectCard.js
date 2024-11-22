@@ -62,12 +62,13 @@ export default function ProjectCard({ project }) {
       className={`flex md:flex-row flex-col phone justify-between h-fit rounded-xl p-4 pb-3 ${mode === "dark" ? "bg-zinc-900" : "bg-gray-200"} ${inView ? "donation" : ""} w-full ${inView ? "opacity-100" : "opacity-15"}`}
     >
       <div className="md:w-1/2 md:pr-10 justify-start">
-        <h1
+        <div
           onClick={handleLinkClickLink}
-          className="text-2xl cursor-pointer font-bold"
+          className="text-2xl cursor-pointer font-bold gap-1 flex items-center "
         >
-          {project.title || " "}
-        </h1>
+          {project.title || " "}{" "}
+          <img className="w-6" src="/link.svg" alt="link" />
+        </div>
         <h2 className="text-lg pt-1 font-bold">{project.title2 || " "}</h2>
         <p
           className={`text-md md:text-[1.17rem] ${mode !== "dark" ? "text-zinc-800" : "text-zinc-300"}`}
@@ -113,8 +114,9 @@ export default function ProjectCard({ project }) {
                     scale: 1.15,
                     transition: {
                       type: "spring",
-                      stiffness: 300,
+                      stiffness: 250,
                       damping: 20,
+                      mass: 1,
                     },
                   }}
                   initial={{ opacity: 0 }}
@@ -124,7 +126,12 @@ export default function ProjectCard({ project }) {
                   className="w-10 h-10 cursor-pointer p-0.5 donation rounded-full flex items-center justify-center"
                 >
                   <img
-                    className={`h-8 w-8 ${title === "javascript" ? "rounded-full" : ""}`}
+                    onClick={() => {
+                      if (title === "Github") {
+                        window.open(`${project.gitHubLink}`, "_blank");
+                      }
+                    }}
+                    className={`h-8 w-8 ${mode === "dark" && title === "Github" ? "bg-gray-300 p-0.5 rounded-full h-9 w-9" : ""} ${title === "javascript" ? "rounded-full" : ""}`}
                     src={project.ToolTipSvg[index]}
                     alt={`${title} Logo`}
                   />
