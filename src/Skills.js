@@ -23,7 +23,7 @@ let frontEnd = {
     "/react.svg",
     "/vite.png",
     "/tailwind.png",
-    "/Bootstrap.svg",
+    "/bootstrap.svg",
     "/redux.svg",
     "/figma.svg",
     "/photoshop.svg",
@@ -32,7 +32,7 @@ let frontEnd = {
 let Backend = {
   tooTip: ["Firebase", "Supabase", "SQL", "Git", "GitHub"],
   ToolTipSvg: [
-    "/Firebase.svg",
+    "/firebase.svg",
     "/supabase.svg",
     "/sql.svg",
     "/git.svg",
