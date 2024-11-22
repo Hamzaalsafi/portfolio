@@ -93,7 +93,7 @@ function App() {
     loop: true,
     typeSpeed: 70,
     deleteSpeed: 50,
-    delaySpeed: 100,
+    delaySpeed: 500,
   });
   return (
     <div>

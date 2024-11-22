@@ -64,7 +64,7 @@ export default function Gallery({ images, link }) {
         ease: [0.68, -0.55, 0.27, 1.55],
       }}
       ref={scrollRef}
-      className="relative rounded-xl flex items-center justify-center w-full h-full"
+      className="relative rounded-xl flex flex-col items-center justify-center w-full h-full"
     >
       <motion.img
         src={images[currentIndex]}
