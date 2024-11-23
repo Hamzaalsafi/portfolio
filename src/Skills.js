@@ -126,7 +126,7 @@ export default function Skills({ SkillsRef }) {
           filter: `blur(${blur ? 1.5 : 0}px)`,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`w-14 h-14 transition-filter   transition-opacity duration-200 absolute pokemon ${mode === "dark" ? "opacity-75" : "opacity-90"} `}
+        className={`w-14 h-14 transition-filter   transition-opacity duration-200  fixed z-[-1px] pokemon ${mode === "dark" ? "opacity-75" : "opacity-90"} `}
         src="/pokemon.svg"
         alt="pokemon"
       />

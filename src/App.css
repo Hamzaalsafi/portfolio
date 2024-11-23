@@ -121,32 +121,7 @@
   width: 46.3%;
   background: var(--peach);
 }
-.spacebar-clicked .key__spacebar {
-  box-shadow:
-    rgba(50, 50, 93, 0.2) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
-    rgba(0, 255, 0, 0.6) 0px 54px 55px,
-    rgba(0, 255, 0, 0.4) 0px -12px 30px,
-    rgba(0, 255, 0, 0.3) 0px 4px 6px,
-    rgba(0, 255, 0, 0.5) 0px 12px 13px,
-    rgba(0, 255, 0, 0.3) 0px -3px 5px;
-  transition:
-    background-color 0.1s ease-out,
-    box-shadow 0.1s ease-out;
-}
-.shift-clicked .key__shift-left {
-  box-shadow:
-    rgba(50, 50, 93, 0.2) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
-    rgba(0, 255, 0, 0.6) 0px 54px 55px,
-    rgba(0, 255, 0, 0.4) 0px -12px 30px,
-    rgba(0, 255, 0, 0.3) 0px 4px 6px,
-    rgba(0, 255, 0, 0.5) 0px 12px 13px,
-    rgba(0, 255, 0, 0.3) 0px -3px 5px;
-  transition:
-    background-color 0.1s ease-out,
-    box-shadow 0.1s ease-out;
-}
+
 .key__bottom-funct {
   width: 9%;
 }
@@ -177,32 +152,7 @@
     background-color 0.1s ease-out,
     box-shadow 0.1s ease-out;
 }
-.compo.spacebar-clicked .key__spacebar {
-  box-shadow:
-    rgba(50, 50, 93, 0.2) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
-    rgba(255, 0, 0, 0.6) 0px 54px 55px,
-    rgba(255, 0, 0, 0.4) 0px -12px 30px,
-    rgba(255, 0, 0, 0.3) 0px 4px 6px,
-    rgba(255, 0, 0, 0.5) 0px 12px 13px,
-    rgba(255, 0, 0, 0.3) 0px -3px 5px;
-  transition:
-    background-color 0.1s ease-out,
-    box-shadow 0.1s ease-out;
-}
-.compo.shift-clicked .key__shift-left {
-  box-shadow:
-    rgba(50, 50, 93, 0.2) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
-    rgba(255, 0, 0, 0.6) 0px 54px 55px,
-    rgba(255, 0, 0, 0.4) 0px -12px 30px,
-    rgba(255, 0, 0, 0.3) 0px 4px 6px,
-    rgba(255, 0, 0, 0.5) 0px 12px 13px,
-    rgba(255, 0, 0, 0.3) 0px -3px 5px;
-  transition:
-    background-color 0.1s ease-out,
-    box-shadow 0.1s ease-out;
-}
+
 @keyframes shake {
   0%,
   100% {

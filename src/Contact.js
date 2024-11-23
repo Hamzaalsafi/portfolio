@@ -124,8 +124,8 @@ export default function Contact({ ContactRef }) {
           filter: `blur(${blur ? 1.5 : 0}px)`,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`w-14 h-14 transition-filter   transition-opacity duration-200 absolute pokemon ${mode === "dark" ? "opacity-75" : "opacity-90"} `}
-        src="/pokemon.svg"
+        className={`w-12 h-12 transition-filter   transition-opacity duration-200 z-[-1px] fixed pokemon ${mode === "dark" ? "opacity-75" : "opacity-90"} `}
+        src="/image.png"
         alt="pokemon"
       />
       <form
