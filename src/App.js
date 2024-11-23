@@ -51,7 +51,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3100);
+    }, 2300);
   }, []);
   const smoothScrollTo = (element) => {
     const targetPosition =
