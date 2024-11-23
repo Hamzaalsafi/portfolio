@@ -6,6 +6,7 @@ import { Nav } from "./Nav";
 import { MorphingBubble } from "./MorphingBubble";
 import { Analytics } from "@vercel/analytics/react";
 import { useModeContext } from "./DarkModeProvider";
+
 import { Loading } from "./Loading";
 const Project = lazy(() => {
   return import("./Project");
@@ -84,19 +85,18 @@ function App() {
   const scrollToProjects = () => smoothScrollTo(Projects.current);
   const [text] = useTypewriter({
     words: [
-      "immersive digital journeys",
-      "next-gen UI/UX experiences",
-      "seamless user interactions",
-      "creative front-end solutions",
-      "user-centered design innovations",
-      "engaging visual experiences",
+      "innovative web interfaces",
+      "thoughtful design concepts",
       "responsive and intuitive designs",
       "high-performance web interfaces",
+      "unique user experiences",
+      "designs that inspire interaction",
+      "out-of-the-box visual solutions",
     ],
 
     loop: true,
-    typeSpeed: 70,
-    deleteSpeed: 50,
+    typeSpeed: 80,
+    deleteSpeed: 60,
     delaySpeed: 500,
   });
   return (
@@ -304,15 +304,15 @@ function App() {
           <div ref={Projects}>
             <Project />
           </div>
-          <div ref={skills}>
-            <Skills />
+          <div className=" relative" ref={skills}>
+            <Skills SkillsRef={skills} />
           </div>
 
           <div ref={AboutMe}>
             <Keyboard AboutMeRef={AboutMe} />
           </div>
           <div ref={ContactRef}>
-            <Contact />
+            <Contact ContactRef={ContactRef} />
           </div>
         </div>
       )}

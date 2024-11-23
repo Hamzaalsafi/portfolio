@@ -40,7 +40,7 @@ let Backend = {
   ],
 };
 
-export default function Skills() {
+export default function Skills({ SkillsRef }) {
   const [activeTooltip, setActiveTooltip] = useState(null);
   const handleTooltipClick = (tooltipName) => {
     if (activeTooltip === tooltipName) {
@@ -51,7 +51,7 @@ export default function Skills() {
   };
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.5,
+    threshold: 0.1,
   });
 
   const mouseRef = useRef({ x: 70, y: 70 });
@@ -60,9 +60,11 @@ export default function Skills() {
   const [blur, setBlur] = useState(false);
 
   const handleMouseMove = (event) => {
+    const skills = SkillsRef.current?.getBoundingClientRect();
+    console.log(skills.top, " ", window.pageYOffset, window.screenTop);
     mouseRef.current = {
       x: event.clientX,
-      y: event.clientY,
+      y: event.clientY - skills.top,
     };
   };
 
@@ -102,7 +104,7 @@ export default function Skills() {
     <div
       onMouseMove={handleMouseMove}
       ref={ref}
-      className={`w-screen  px-2 relative h-screen ${mode === "dark" ? "app" : "app2"} overflow-hidden justify-center app flex flex-col items-center`}
+      className={`w-screen nono  px-2 relative h-screen ${mode === "dark" ? "app" : "app2"} overflow-hidden justify-center app flex flex-col items-center`}
     >
       <motion.img
         initial={{

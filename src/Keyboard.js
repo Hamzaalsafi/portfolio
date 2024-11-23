@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useModeContext } from "./DarkModeProvider";
 import { useInView } from "react-intersection-observer";
 const AboutME =
-  "I'm Hamza Alsafi, a front-end developer passionate about UX/UI design, creating intuitive interfaces that blend aesthetics with functionality. As a fourth-year Computer Engineering student, I combine technical knowledge with design principles to build impactful digital experiences. With a Codeforces rating of 1550 and experience organizing university programming competitions, I’ve honed my problem-solving skills through competitive programming. Currently, I’m expanding into back-end development to offer full-stack solutions.";
+  "I am a Front-End Developer and UX/UI Designer with a solid background in creating user-friendly interfaces and applications. Currently studying Computer Engineering at Yarmouk University, I have developed problem-solving skills through competitive programming, with a Codeforces rating of 1550. I have experience in building projects, organizing programming competitions, and working well within team settings. I am also working on improving my backend development skills to become a full-stack developer.";
 const rows = [
   [
     { label: "ESC", icon: "x", className: "key__esc" },
@@ -140,6 +140,8 @@ export default function Keyboard() {
       feather.replace();
 
       const handleKeyDown = (event) => {
+        const clickSound = new Audio("/typing-sound.mp3");
+        const worngSound = new Audio("/vibrating.mp3");
         setTypeCounters((prevCounter) => prevCounter + 1);
         const pressedKey = event.key.toUpperCase();
 
@@ -162,7 +164,7 @@ export default function Keyboard() {
         }
         if (pressedKey === correctChar) {
           setCompo((prevCompo) => prevCompo + 1);
-
+          clickSound.play();
           setTypedText((prevText) => {
             const newText = prevText + pressedKey;
             return newText;
@@ -170,11 +172,14 @@ export default function Keyboard() {
 
           setCurrentIndex((prevIndex) => prevIndex + 1);
         } else {
-          setCompo(0);
-          setWronge(true);
-          setTimeout(() => {
-            setWronge(false);
-          }, 400);
+          if (pressedKey !== "SHIFT") {
+            worngSound.play();
+            setCompo(0);
+            setWronge(true);
+            setTimeout(() => {
+              setWronge(false);
+            }, 400);
+          }
         }
 
         if (pressedKey === " ") {
@@ -182,6 +187,13 @@ export default function Keyboard() {
           x.classList.add("spacebar-clicked");
           setTimeout(() => {
             x.classList.remove("spacebar-clicked");
+          }, 100);
+        }
+        if (pressedKey === "SHIFT") {
+          const x = document.querySelector(".keyboard");
+          x.classList.add("shift-clicked");
+          setTimeout(() => {
+            x.classList.remove("shift-clicked");
           }, 100);
         }
       };

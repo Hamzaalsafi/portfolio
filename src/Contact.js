@@ -3,10 +3,10 @@ import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useModeContext } from "./DarkModeProvider";
-export default function Contact() {
+export default function Contact({ ContactRef }) {
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.35,
+    threshold: 0.1,
   });
   const mouseRef = useRef({ x: 70, y: 70 });
   const [animatedPosition, setAnimatedPosition] = useState({ x: 70, y: 70 });
@@ -22,9 +22,10 @@ export default function Contact() {
     window.open("https://github.com/Hamzaalsafi", "_blank");
   };
   const handleMouseMove = (event) => {
+    const contact = ContactRef.current?.getBoundingClientRect();
     mouseRef.current = {
       x: event.clientX,
-      y: event.clientY,
+      y: event.clientY - contact.top,
     };
   };
 
