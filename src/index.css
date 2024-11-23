@@ -54,7 +54,7 @@ body {
 
   min-height: 200px;
   stroke-dasharray: 2746;
-  animation: 2s ss linear;
+  animation: 2.5s ss linear;
 }
 
 @keyframes ss {

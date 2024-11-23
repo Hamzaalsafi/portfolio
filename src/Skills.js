@@ -51,7 +51,7 @@ export default function Skills({ SkillsRef }) {
   };
   const { ref, inView } = useInView({
     triggerOnce: false,
-    threshold: 0.1,
+    threshold: 0.5,
   });
 
   const mouseRef = useRef({ x: 70, y: 70 });
@@ -61,7 +61,7 @@ export default function Skills({ SkillsRef }) {
 
   const handleMouseMove = (event) => {
     const skills = SkillsRef.current?.getBoundingClientRect();
-    console.log(skills.top, " ", window.pageYOffset, window.screenTop);
+
     mouseRef.current = {
       x: event.clientX,
       y: event.clientY - skills.top,

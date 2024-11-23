@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import Tooltip from "@mui/material/Tooltip";
 import emailjs from "@emailjs/browser";
 import { useModeContext } from "./DarkModeProvider";
 export default function Contact({ ContactRef }) {
@@ -18,6 +19,7 @@ export default function Contact({ ContactRef }) {
       "_blank"
     );
   };
+
   const handleLinkClickGithub = () => {
     window.open("https://github.com/Hamzaalsafi", "_blank");
   };
@@ -84,6 +86,18 @@ export default function Contact({ ContactRef }) {
   const openCV = () => {
     window.open("/CV.pdf", "_blank");
   };
+  const [activeTooltip, setActiveTooltip] = useState(null);
+
+  const handleClick = () => {
+    const email = "hamzasf345@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      setActiveTooltip("Email copied!");
+
+      setTimeout(() => {
+        setActiveTooltip(null);
+      }, 1200);
+    });
+  };
   return (
     <div
       ref={ref}
@@ -119,7 +133,12 @@ export default function Contact({ ContactRef }) {
         ref={formRef}
         className={`${mode === "dark" ? "text-gray-200" : "text-zinc"} h-full justify-center flex flex-col items-center gap-8 w-full`}
       >
-        <input
+        <motion.input
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: inView ? 1 : 0.15,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           className={`z-20 ${
@@ -132,7 +151,12 @@ export default function Contact({ ContactRef }) {
           placeholder="Name"
           name="user_name"
         />
-        <input
+        <motion.input
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: inView ? 1 : 0.15,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           className={`z-20 ${
@@ -145,7 +169,12 @@ export default function Contact({ ContactRef }) {
           name="user_email"
           required
         />
-        <textarea
+        <motion.textarea
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: inView ? 1 : 0.15,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           className={`z-20 ${
@@ -157,7 +186,12 @@ export default function Contact({ ContactRef }) {
           name="message"
           required
         />
-        <button
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: inView ? 1 : 0.15,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           type="submit"
@@ -168,13 +202,23 @@ export default function Contact({ ContactRef }) {
           }`}
         >
           Send
-        </button>
+        </motion.button>
       </form>
-      <footer
+      <motion.footer
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: inView ? 1 : 0.15,
+          transition: { duration: 0.5, ease: "easeInOut" },
+        }}
         className={`flex w-screen absolute h-screen  flex-col items-center justify-end`}
       >
-        <div
+        <motion.div
           onMouseEnter={handleMouseEnter}
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: inView ? 1 : 0.15,
+            transition: { duration: 0.5, ease: "easeInOut" },
+          }}
           onMouseLeave={handleMouseLeave}
           className={`flex justify-center h-fit ${mode === "dark" ? "darkSkillsBox" : "lightSkillsBox"}  mt-8 md:mt-16   gap-4 py-6  w-screen`}
         >
@@ -255,20 +299,41 @@ export default function Contact({ ContactRef }) {
             exit={{ opacity: 0 }}
             style={{ willChange: "transform, opacity" }}
           >
-            <motion.img
-              src={`${mode === "dark" ? "/gmail.svg" : "/mailDark.svg"}`}
-              alt="gmail Logo"
-              className="w-12 h-12"
-              key={mode}
-              animate={{
-                opacity: [0, 1],
-                scale: [0.8, 1],
+            <Tooltip
+              open={activeTooltip === "Email copied!"}
+              PopperProps={{
+                modifiers: [
+                  {
+                    name: "offset",
+                    options: {
+                      offset: [0, -4],
+                    },
+                  },
+                ],
               }}
-              transition={{
-                opacity: { duration: 0.4, ease: "easeInOut" },
-                scale: { duration: 0.4, ease: "easeInOut" },
+              title="Email copied!"
+              arrow
+              classes={{
+                tooltip: mode === "dark" ? "custom-tooltip" : "custom-tooltip2",
+                arrow: mode === "dark" ? "custom-arrow" : "custom-arrow2",
               }}
-            />
+            >
+              <motion.img
+                onClick={handleClick}
+                src={`${mode === "dark" ? "/gmail.svg" : "/mailDark.svg"}`}
+                alt="Gmail Logo"
+                className="w-12 h-12 cursor-pointer"
+                key={mode}
+                animate={{
+                  opacity: [0, 1],
+                  scale: [0.8, 1],
+                }}
+                transition={{
+                  opacity: { duration: 0.4, ease: "easeInOut" },
+                  scale: { duration: 0.4, ease: "easeInOut" },
+                }}
+              />
+            </Tooltip>
           </motion.div>
           <motion.div
             className="w-11 h-11 md:w-12 md:h-12  flex cursor-pointer justify-center items-center  rounded-full shadow-lg" // Circular background for logo
@@ -301,7 +366,7 @@ export default function Contact({ ContactRef }) {
               className="w-11 h-11 md:w-12 md:h-12"
             />
           </motion.div>
-        </div>
+        </motion.div>
         <h1
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -309,7 +374,7 @@ export default function Contact({ ContactRef }) {
         >
           Crafted with love ❤️ by Hamza Alsafi
         </h1>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
