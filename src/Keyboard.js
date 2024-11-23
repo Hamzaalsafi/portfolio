@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useModeContext } from "./DarkModeProvider";
 import { useInView } from "react-intersection-observer";
 const AboutME =
-  "I'm Hamza Alsafi, a front-end developer with a strong passion for UX/UI design, focusing on creating intuitive, user-friendly interfaces that seamlessly blend aesthetics and functionality. Currently in my fourth year of Computer Engineering studies, I apply both technical knowledge and design principles to build impactful digital experiences.With a Codeforces rating of 1550, I've sharpened my problem-solving skills through competitive programming and applied them to several projects. I’ve also organized university-level programming competitions. As I continue to grow, I’m expanding my expertise into back-end development to offer full-stack solutions and tackle a wider range of technical challenges.";
+  "I'm Hamza Alsafi, a front-end developer passionate about UX/UI design, creating intuitive interfaces that blend aesthetics with functionality. As a fourth-year Computer Engineering student, I combine technical knowledge with design principles to build impactful digital experiences. With a Codeforces rating of 1550 and experience organizing university programming competitions, I’ve honed my problem-solving skills through competitive programming. Currently, I’m expanding into back-end development to offer full-stack solutions.";
 const rows = [
   [
     { label: "ESC", icon: "x", className: "key__esc" },
