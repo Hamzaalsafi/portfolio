@@ -19,10 +19,10 @@ export const MorphingBubble = () => {
         const elapsedTime = (Date.now() - startTime) / 1000;
         setTimeSpent(elapsedTime);
 
-        if (elapsedTime >= 3.4) {
+        if (elapsedTime >= 2.5) {
           setImage(!image);
         }
-        if (elapsedTime >= 4) {
+        if (elapsedTime >= 3) {
           setIsMouseUp(false);
           setDisable(true);
 

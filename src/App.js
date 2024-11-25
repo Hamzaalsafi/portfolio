@@ -105,6 +105,11 @@ function App() {
       {!loading && (
         <div className="overflow-x-hidden">
           <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: !loading ? 1 : 0.8,
+              transition: { duration: 0.2, ease: "easeInOut" },
+            }}
             ref={Home}
             className={`w-screen h-screen ${mode === "dark" ? "app" : "app2"} app flex flex-col items-center`}
           >
@@ -121,10 +126,23 @@ function App() {
               scrollToProjects={scrollToProjects}
             />
             <div className="  w-[100%] max-w-[950px] h-screen justify-between  flex-col md:flex-row flex md:justify-between  items-center p-20 px-2 lg:px-4 ">
-              <div className="flex-col">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: !loading ? 1 : 0.15,
+                  scale: !loading ? 1 : 0.5,
+                  transition: { duration: 0.5, ease: "easeInOut" },
+                }}
+                className="flex-col"
+              >
                 <MorphingBubble />
-              </div>
-              <div
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: !loading ? 1 : 0.15,
+                  transition: { duration: 0.5, ease: "easeInOut" },
+                }}
                 className={`flex-col ${mode === "dark" ? "text-gray-200" : "text-black"}    justify-start pt-4`}
               >
                 <h1 className="md:text-4xl text-3xl font-bold  ">
@@ -289,7 +307,7 @@ function App() {
                     />
                   </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </div>
             <div
               className={`w-full  relative h-[6.2em] ${mode === "dark" ? "bg-zinc-900" : "bg-zinc-300"}  border-0 border-t-2 border-gray-500  bottom-0`}
