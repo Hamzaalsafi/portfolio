@@ -155,7 +155,9 @@ export const MorphingBubble = () => {
           overflow: "hidden",
         }}
       >
-        {isMouseUp && <WaterAnimation />}
+        {isMouseUp && (
+          <div className="photoCover bottom-0 w-full h-full absolute z-50 "></div>
+        )}
 
         {!image && (
           <motion.img
