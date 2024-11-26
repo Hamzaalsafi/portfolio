@@ -83,13 +83,13 @@ export const MorphingBubble = () => {
           scale: 1.1,
           boxShadow: "0px 0px 50px rgba(194, 31, 36, 0.6)",
           backgroundColor: "#b40a11",
-          transition: { duration: 0.5 },
+          transition: { duration: 2.5 },
         }}
         whileTap={{
           scale: 1.1,
           backgroundColor: "#d43f3f",
           boxShadow: "0px 0px 30px rgba(216, 54, 58, 0.6)",
-          transition: { duration: 0.3 },
+          transition: { duration: 2.5 },
         }}
         animate={{
           borderRadius: [
