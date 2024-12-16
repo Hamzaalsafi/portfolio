@@ -9,6 +9,7 @@ let frontEnd = {
     "CSS",
     "Javascript",
     "React",
+    "Next JS",
     "Vite",
     "Tailwind",
     "Bootstrap",
@@ -21,6 +22,7 @@ let frontEnd = {
     "/css.svg",
     "/javascript.svg",
     "/react.svg",
+    "/nextJS2.svg",
     "/vite.png",
     "/tailwind.png",
     "/bootstrap.svg",
@@ -30,11 +32,12 @@ let frontEnd = {
   ],
 };
 let Backend = {
-  tooTip: ["Firebase", "Supabase", "SQL", "Git", "GitHub"],
+  tooTip: ["Firebase", "Supabase", "SQL", "TypeScript", "Git", "GitHub"],
   ToolTipSvg: [
     "/firebase.svg",
     "/supabase.svg",
     "/sql.svg",
+    "/typeScript.svg",
     "/git.svg",
     "github.svg",
   ],
@@ -354,7 +357,12 @@ export default function Skills({ SkillsRef }) {
               >
                 <img
                   className={`md:h-12 h-10 w-10 p-0.5 md:w-12 ${title === "Javascript" ? "rounded-full" : ""}`}
-                  src={frontEnd.ToolTipSvg[index]}
+                  src={
+                    frontEnd.ToolTipSvg[index] === "/nextJS2.svg" &&
+                    mode !== "dark"
+                      ? "/nextJS.svg"
+                      : frontEnd.ToolTipSvg[index]
+                  }
                   alt={`${title} Logo`}
                 />
               </motion.div>
@@ -415,10 +423,10 @@ export default function Skills({ SkillsRef }) {
                 exit={{ opacity: 0 }}
                 style={{ willChange: "transform, opacity" }}
                 onClick={() => handleTooltipClick(title)}
-                className={`w-12 h-12  md:w-14 md:h-14  cursor-pointer p-0.5 donation rounded-full flex items-center justify-center`}
+                className={`w-12 h-12   md:w-14 md:h-14  cursor-pointer p-0.5 donation rounded-full flex items-center justify-center`}
               >
                 <img
-                  className={`w-10 h-10  md:w-12 md:h-12 p-0.5  ${title === "GitHub" && mode === "dark" ? "bg-slate-50 rounded-full" : ""}`}
+                  className={`w-10 h-10  md:w-12 md:h-12 p-0.5 ${title === "TypeScript" ? "rounded-full" : ""}  ${title === "GitHub" && mode === "dark" ? "bg-slate-50 rounded-full" : ""}`}
                   src={Backend.ToolTipSvg[index]}
                   alt={`${title} Logo`}
                 />
